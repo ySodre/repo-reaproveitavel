@@ -13,6 +13,6 @@ jobs:
               run: echo "Publicação da Relase final"
     CD:
       needs: [CI]
-      uses: ysodre/repo-reaproveitavel/.github/workflows/cd.yml@main
+      uses: ysodre/repo-deploy/.github/workflows/cd.yml@main
       secrets:
         ambiente: ${{ secrets.AMBIENTE_ENTREGA }}

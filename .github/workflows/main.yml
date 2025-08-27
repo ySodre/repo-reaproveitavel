@@ -1,6 +1,16 @@
 name: CI/CD Fake
 on: 
    workflow_dispatch:  
+        inputs:
+            ambiente:
+                type: choice
+                default: "desensolvimento"
+                required: true
+                description: "Ambiente onde vai ser feito o deploy"
+                options:
+                  - desenvolvimento
+                  - homologacao
+                  - producao
 jobs:
     CI:
         runs-on: ubuntu-latest
@@ -15,4 +25,4 @@ jobs:
       needs: [CI]
       uses: ysodre/repo-reaproveitavel/.github/workflows/cd.yml@main
       with:
-        ambiente: producao
+        ambiente: ${{ inputs.ambiente }}
